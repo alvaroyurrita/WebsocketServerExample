@@ -4,7 +4,9 @@
   "description": "First CH5 Program",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel index.html",
+    "build": "parcel build index.html --public-url .",
+    "build:archive": "ch5-cli archive -p FirstCh -d dist -o tsw"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/DGI-Technologies/FirstCH/issues"
   },
-  "homepage": "https://github.com/DGI-Technologies/FirstCH#readme"
+  "homepage": "https://github.com/DGI-Technologies/FirstCH#readme",
+  "dependencies": {
+    "@crestron/ch5-crcomlib": "^1.1.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
 }
