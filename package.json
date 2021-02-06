@@ -1,0 +1,19 @@
+{
+  "name": "firstch",
+  "version": "0.1.0",
+  "description": "First CH5 Program",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DGI-Technologies/FirstCH.git"
+  },
+  "author": "Alvaro Yurrita",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DGI-Technologies/FirstCH/issues"
+  },
+  "homepage": "https://github.com/DGI-Technologies/FirstCH#readme"
+}
