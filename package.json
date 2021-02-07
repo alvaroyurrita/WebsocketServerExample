@@ -2,11 +2,11 @@
   "name": "firstch",
   "version": "0.1.0",
   "description": "First CH5 Program",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html --public-url .",
-    "build:archive": "ch5-cli archive -p FirstCh -d dist -o tsw"
+    "build:archive": "ch5-cli archive -p FirstCh -d . -o tsw",
+    "build:deploy": "ch5-cli deploy -H 192.168.0.147 -t touchscreen -p ./tsw/FirstCh.ch5z ",
+    "build:all": "rm tsw -r && npm run build:archive && npm run build:deploy"
   },
   "repository": {
     "type": "git",
@@ -19,9 +19,7 @@
   },
   "homepage": "https://github.com/DGI-Technologies/FirstCH#readme",
   "dependencies": {
-    "@crestron/ch5-crcomlib": "^1.1.0"
-  },
-  "devDependencies": {
-    "parcel-bundler": "^1.12.4"
+    "@crestron/ch5-crcomlib": "^0.0.4",
+    "@crestron/ch5-theme": "^1.0.0"
   }
 }

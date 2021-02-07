@@ -1,9 +1,14 @@
-import * as CrComLib from "@crestron/ch5-crcomlib";
+import * as CrComLib from "./cr-com-lib";
 
 let buttonState = false;
 let buttonValue = 0;
 
 const button=document.querySelector(".demo");
+
+CrComLib.subscribeState("n","12",(value)=>{
+    document.getElementById('theSlider').value = value;
+})
+
 
 button.addEventListener("click",() =>{
     buttonState = !buttonState
