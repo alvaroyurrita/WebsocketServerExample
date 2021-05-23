@@ -17,51 +17,61 @@ namespace WebsocketServerExample
         public WebSocketHelper(List<AudioLevel> RoomAudioLevels)
         {
             this.RoomAudioLevels = RoomAudioLevels;
-            var Server = new WebSocketServer("wss://192.168.0.143:4649");
-            Server.EnabledSslProtocols = SslProtocols.Tls12 | SslProtocols.None | SslProtocols.Default;
-            Server.Certificate = new X509Certificate2("./Certificate/webserver_cert.pfx", "DGItech01862!");
-            Server.SupportedSubProtocols = new[] { "Audio" };
-            Server.Start(socket =>
+            try
             {
-                CrestronConsole.PrintLine("WebSocket started");
+                var Server = new WebSocketServer("wss://192.168.0.143:49620");
 
-                socket.OnError = obj =>
+                Server.EnabledSslProtocols = SslProtocols.Tls12 | SslProtocols.None | SslProtocols.Default;
+                Server.Certificate = new X509Certificate2("./Certificate/webserver_cert.pfx", "DGItech01862!");
+                Server.SupportedSubProtocols = new[] { "Audio" };
+                Server.Start(socket =>
                 {
-                    CrestronConsole.PrintLine(obj.Message);
-                };
+                    CrestronConsole.PrintLine("WebSocket started");
 
-                socket.OnOpen = () =>
-                {
-                    CrestronConsole.PrintLine("Socket Open");
-                    CrestronConsole.PrintLine($"{socket.ConnectionInfo.Id}");
-                    allSockets.Add(socket);
-                };
-
-                socket.OnClose = () =>
-                {
-                    CrestronConsole.PrintLine("Socket Closed");
-                    CrestronConsole.PrintLine($"{socket.ConnectionInfo.Id}");
-                    allSockets.Remove(socket);
-                };
-
-                socket.OnMessage = Message =>
-                {
-                    var msg = JsonConvert.DeserializeObject<AudioLevelMessage>(Message);
-                    switch (msg.message)
+                    socket.OnError = obj =>
                     {
-                        case "GET":
-                            socket.Send(JsonConvert.SerializeObject(RoomAudioLevels));
-                            break;
-                        case "POST":
-                            RoomAudioLevels = msg.audioLevels;
+                        CrestronConsole.PrintLine(obj.Message);
+                    };
+
+                    socket.OnOpen = () =>
+                    {
+                        CrestronConsole.PrintLine("Socket Open");
+                        CrestronConsole.PrintLine($"{socket.ConnectionInfo.Id}");
+                        allSockets.Add(socket);
+                    };
+
+                    socket.OnClose = () =>
+                    {
+                        CrestronConsole.PrintLine("Socket Closed");
+                        CrestronConsole.PrintLine($"{socket.ConnectionInfo.Id}");
+                        allSockets.Remove(socket);
+                    };
+
+                    socket.OnMessage = Message =>
+                    {
+                        var msg = JsonConvert.DeserializeObject<AudioLevelMessage>(Message);
+                        switch (msg.message)
+                        {
+                            case "GET":
+                                socket.Send(JsonConvert.SerializeObject(RoomAudioLevels));
+                                break;
+                            case "POST":
+                                RoomAudioLevels = msg.audioLevels;
                             //socket.Send(JsonConvert.SerializeObject(RoomAudioLevels));
                             allSockets.ForEach(c => c.Send(JsonConvert.SerializeObject(RoomAudioLevels)));
-                            break;
-                        default:
-                            break;
-                    }
-                };
-            });
+                                break;
+                            default:
+                                break;   
+                        }
+                    };
+                });
+            }
+            catch (Exception e)
+            {
+                CrestronConsole.PrintLine(e.Message);
+                CrestronConsole.PrintLine(e.StackTrace);
+                CrestronConsole.PrintLine(e.Source);
+            }
         }
 
         public void SendUpdate()

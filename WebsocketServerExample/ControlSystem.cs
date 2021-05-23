@@ -38,6 +38,8 @@ namespace WebsocketServerExample
             catch (Exception e)
             {
                 ErrorLog.Error("Error in the constructor: {0}", e.Message);
+                ErrorLog.Error("Error in the constructor: {0}", e.Source);
+                ErrorLog.Error("Error in the constructor: {0}", e.InnerException);
             }
         }
 
@@ -69,7 +71,7 @@ namespace WebsocketServerExample
                 {
                     RoomAudioLevels[0].IsMuted = !RoomAudioLevels[0].IsMuted;
                     myWebSocket.SendUpdate();
-                }, "ToggleMutle", "Mutes Channel 1 Mute", ConsoleAccessLevelEnum.AccessOperator);
+                }, "ToggleMute", "Mutes Channel 1 Mute", ConsoleAccessLevelEnum.AccessOperator);
                 CrestronConsole.AddNewConsoleCommand((obj) =>
                 {
                     RoomAudioLevels[0].LevelPercent = (RoomAudioLevels[0].LevelPercent + 10) <= 100 ? (RoomAudioLevels[0].LevelPercent + 10) : 100;
