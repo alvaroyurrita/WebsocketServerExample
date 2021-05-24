@@ -19,7 +19,7 @@ namespace WebsocketServerExample
             this.RoomAudioLevels = RoomAudioLevels;
             try
             {
-                var Server = new WebSocketServer("ws://192.168.0.143:49620");
+                var Server = new WebSocketServer("ws://0.0.0.0:49620");
 
                 Server.SupportedSubProtocols = new[] { "Audio" };
                 Server.Start(socket =>
