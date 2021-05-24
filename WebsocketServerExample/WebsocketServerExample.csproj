@@ -139,6 +139,9 @@
     <Compile Include="WebSocketHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Certificate\cp4-home.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Certificate\webserver_cert.pfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
