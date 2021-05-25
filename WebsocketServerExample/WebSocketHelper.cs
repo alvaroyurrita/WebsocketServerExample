@@ -19,7 +19,7 @@ namespace WebsocketServerExample
             this.RoomAudioLevels = RoomAudioLevels;
             try
             {
-                var Server = new WebSocketServer("wss://192.168.0.143:49620");
+                var Server = new WebSocketServer("wss://0.0.0.0:49620");
 
                 Server.EnabledSslProtocols = SslProtocols.Tls12 | SslProtocols.None | SslProtocols.Default;
                 Server.Certificate = new X509Certificate2("./Certificate/cp4-home.pfx","DGItech01862!");
