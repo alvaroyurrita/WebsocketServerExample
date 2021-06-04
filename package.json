@@ -20,9 +20,6 @@
     "url": "https://github.com/DGI-Technologies/FirstCH/issues"
   },
   "homepage": "https://github.com/DGI-Technologies/FirstCH#readme",
-  "dependencies": {
-    "eruda": "^2.4.1"
-  },
   "devDependencies": {
     "parcel-bundler": "^1.12.4"
   }
