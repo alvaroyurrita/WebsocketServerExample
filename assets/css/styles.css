@@ -1,5 +1,5 @@
 :root {
-    --bg: rgba(25,59,102,0.10);
+    --bg: rgba(219, 227, 241, 0.836);
     --main: rgba(20,121,255,1);
     --mainPressed: rgba(164.192.228,1);
     --font: rgba(26,59,104,);
@@ -39,4 +39,17 @@ button {
 .demoActive{
     background-color: rgba(35,114,35);
     color: black;
+}
+
+.grid1 {
+  border: black .5px solid;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+  margin: 5px;
+  grid-gap: .5px;
+}
+
+.cell {
+  border:  gray 1px solid;
 }

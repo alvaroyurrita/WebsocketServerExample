@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible"
+        content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet"
+        href="./assets/css/styles.css">
+  <link rel="stylesheet"
+        href="./node_modules/@crestron/ch5-theme/output/themes/light-theme.css">
+  <title>First CH5 program</title>
+</head>
+
+<body>
+  <h1>Basics of CH5 Comm Library</h1>
+  <button class="demo">Button</button>
+  <ch5-slider id="theSlider"
+              value="-40"
+              ticks='{"0":"-60", "25":"-40", "50":"-20", "75":"-10", "100": "0" }'
+              showTickValues="true"
+              sendEventOnChange="11"
+              receiveStateValue="11"></ch5-slider>
+  <ch5-button label="Toggle"
+              sendeventOnClick="12"
+              receiveStateSelected="13"
+              receiveStateEnable="14"
+              noShowType="visibility"
+              receiveStateShow="15">
+  </ch5-button>
+  <!-- <template id="Contract1.Button.ButtonInstance"> -->
+  <div id="Button.ButtonInstance">
+    <ch5-button sendEventOnClick="ButtonInstance.True"
+                receiveStateSelected="ButtonInstance.Button_On"
+                label="btn1">
+    </ch5-button>
+    <ch5-button sendEventOnClick="ButtonInstance.False"
+                receiveStateSelected="ButtonInstance.Button_Off"
+                label="btn2">
+    </ch5-button>
+  </div>
+  <!-- </template> -->
+</body>
+<script type="text/javascript"
+        src="assets/js/index.js"></script>
+
+</html>
